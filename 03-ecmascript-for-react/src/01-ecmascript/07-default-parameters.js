@@ -3,9 +3,15 @@
 
 // 🔶 기본값 매개변수를 활용하고, nullish 연산자를 제거하세요.
 // 참고: https://mzl.la/3JkRZBH
-const randomNumber = (min, max) => {
-  min = min ?? 0;
-  max = max ?? 10;
+const randomNumber = (min = 0, max = 10) => {
+
+  console.log(min, max);
+
+  // nullish (null | undefined)
+  // min = min ?? 0; // function parameter default value
+  // max = max ?? 10;
+
+  // 이렇게 쓰지 말고 초기값을 할당하자
 
   return Math.round(Math.random() * (max - min)) + min;
 };
