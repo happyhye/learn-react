@@ -32,14 +32,50 @@ function delay(callback, time = 1000) {
 // Promise
 // 참고: https://mzl.la/3d1He5h
 // 🔶 delayPromise 함수를 작성합니다.
-const delayPromise = () => {};
+
+
+const delayPromise = (timeout=1000) => {
+
+  // Promise 클래스 -> 프라미스 인스턴스 생성
+  const promise = new Promise((resolve)=>{
+    setTimeout(resolve, timeout)
+  })
+
+
+  // 인스턴스 반환
+  return promise;
+};
+
+
+
 
 function practice2() {
   console.log('start!');
   // 🔶 delayPromise 함수를 사용해 1초마다 로그를 남기도록 작성합니다.
+  delayPromise()
+  .then(()=>{
+    console.log('1s');
+    return delayPromise()
+  })
+  .then(()=>{
+    console.log('2s');
+    return delayPromise()
+  })
+  .then(()=>{
+    console.log('3s');
+    return delayPromise()
+  })
+  .then(()=>{
+    console.log('4s');
+    return delayPromise()
+  })
+  .then(()=>{
+    console.log('end');
+    return delayPromise()
+  })
 }
 
-// practice2();
+practice2();
 
 // Async Await
 // 참고: https://mzl.la/49EvJxn
@@ -73,7 +109,7 @@ const promise2 = () =>
     });
   });
 
-const promise3 = Promise.reject('❌ 오류 발생!');
+const promise3 = () => Promise.reject('❌ 오류 발생!');
 
 // Promise.all
 // 참고: https://mzl.la/49EvJxn
